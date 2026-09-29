@@ -1,50 +1,37 @@
 # Market Session Briefing → Discord
 
-Automatically generates a global market briefing with OpenAI web search and sends it to Discord when each major FX session opens.
+Architecture:
 
-## Schedule
+**ChatGPT Scheduled Task → GitHub → GitHub Actions → Discord**
 
-The workflows use GitHub Actions timezone-aware schedules so DST is handled by the session's own timezone.
+No OpenAI API key is required in this repository.
 
-| Session | Local open used | Timezone |
-|---|---:|---|
-| Sydney | 08:00 Mon-Fri | Australia/Sydney |
-| Tokyo | 09:00 Mon-Fri | Asia/Tokyo |
-| London | 08:00 Mon-Fri | Europe/London |
-| New York | 08:00 Mon-Fri | America/New_York |
+## How it works
 
-> These are conventional FX session-open times used by this project. If you prefer another definition, edit the corresponding workflow.
+1. A ChatGPT Scheduled Task checks every hour whether a major market session has just opened.
+2. If Sydney, Tokyo, London, or New York has opened, ChatGPT researches the latest global market news and updates `briefings/latest.md`.
+3. That GitHub push triggers the workflow currently stored at `.github/workflows/new-york.yml` (display name: **Send Briefing to Discord**).
+4. GitHub Actions runs `send_discord.py` and posts the briefing to Discord.
 
-## Required GitHub Actions secrets
+## Required GitHub Actions secret
 
 Repository → Settings → Secrets and variables → Actions:
 
 - `DISCORD_WEBHOOK_URL`
-- `OPENAI_API_KEY`
 
-Never commit either secret to the repository.
+`OPENAI_API_KEY` is not required for this architecture.
 
-## Optional model setting
+## Sessions monitored
 
-Repository → Settings → Secrets and variables → Actions → Variables:
+- Sydney
+- Tokyo
+- London
+- New York
 
-- Name: `OPENAI_MODEL`
-- Example: `gpt-5.6-luna`
+The ChatGPT task checks each session's own local timezone so DST changes can be handled without hard-coded UTC offsets.
 
-If this variable is empty, the script defaults to `gpt-5.6-luna`.
+## Manual relay test
 
-## Manual test
+Edit `briefings/latest.md` and commit the change. That push should automatically send the file contents to Discord.
 
-Open the repository's **Actions** tab, choose any session workflow, then click **Run workflow**.
-
-The briefing covers:
-- trading / financial markets / crypto
-- global business and economics
-- AI and technology
-- breaking developments, impact, key data, context, and things to watch
-
-The OpenAI Responses API uses web search, so API usage and web-search tool usage may incur charges.
-
-## Notes
-
-GitHub scheduled workflows can occasionally start a few minutes late during periods of high Actions load. The schedule runs from the default branch.
+You can also use **Actions → Send Briefing to Discord → Run workflow** to resend the current file.
