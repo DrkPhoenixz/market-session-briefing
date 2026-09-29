@@ -1,31 +1,29 @@
-name: New York Session Briefing
+name: Send Briefing to Discord
 
 on:
-  schedule:
-    - cron: "0 8 * * 1-5"
-      timezone: "America/New_York"
+  push:
+    branches: [main]
+    paths:
+      - "briefings/latest.md"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: new-york-session-briefing
+  group: discord-market-briefing
   cancel-in-progress: false
 
 jobs:
-  briefing:
+  send:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     env:
-      SESSION: New York
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generate and send New York briefing
-        run: python market_briefing.py
+      - name: Send latest briefing to Discord
+        run: python send_discord.py
