@@ -5,7 +5,7 @@ import urllib.request
 from pathlib import Path
 
 PURPLE = 0x7C3AED
-RED = 0xEF4444
+ORANGE = 0xF59E0B
 GRAY = 0x64748B
 
 def require_env(name: str) -> str:
@@ -33,20 +33,25 @@ def trim(text, limit):
     text = (text or "").strip()
     return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
 
-def make_embed(item, impactful=False):
-    title = trim(item.get("title", "Berita"), 250)
-    summary = trim(item.get("summary", ""), 2400)
-    why = trim(item.get("impact", ""), 900)
-    url = item.get("url", "").strip()
-    desc = summary
-    if why:
-        desc += "\n\n**Dampak pasar:** " + why
+def make_embed(item, impactful=False, generated=""):
+    title = trim(item.get("title", "Berita"), 240)
+    summary = trim(item.get("summary", ""), 2600)
+    impact = trim(item.get("impact", ""), 900)
+    url = str(item.get("url", "")).strip()
+    points = [p.strip(" •-\\n\\t") for p in summary.splitlines() if p.strip()]
+    if len(points) == 1:
+        points = [points[0]]
+    description = "**Summary by AI**\\n\\n" + "\\n".join("• " + p for p in points[:3])
+    if impactful and impact:
+        description += "\\n\\n**Market Impact**\\n• " + impact
     embed = {
-        "title": ("🚨 " if impactful else "📰 ") + title,
-        "description": trim(desc, 4000),
-        "color": RED if impactful else PURPLE,
+        "author": {"name": "The Pirates Harbor • Crypto & Forex"},
+        "title": ("🚨 " if impactful else "") + title,
+        "description": trim(description, 3900),
+        "color": ORANGE if impactful else PURPLE,
+        "footer": {"text": "🏴‍☠️ The Pirates Harbor • " + trim(generated, 80)},
     }
-    if url.startswith("http"):
+    if url.startswith(("https://", "http://")):
         embed["url"] = url
     return embed
 
@@ -71,9 +76,9 @@ def main():
 
     embeds = []
     for item in data.get("impactful", [])[:3]:
-        embeds.append(make_embed(item, impactful=True))
+        embeds.append(make_embed(item, impactful=True, generated=generated))
     for item in data.get("other_news", [])[:7]:
-        embeds.append(make_embed(item, impactful=False))
+        embeds.append(make_embed(item, impactful=False, generated=generated))
 
     if not embeds:
         embeds = [{
@@ -83,7 +88,7 @@ def main():
         }]
 
     post_json(webhook, {
-        "username": "The Pirates Harbor Daily",
+        "username": "The Pirates Harbor News",
         "content": trim(content, 1900),
         "embeds": embeds[:10],
         "allowed_mentions": {"parse": []},
