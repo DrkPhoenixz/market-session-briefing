@@ -83,18 +83,43 @@ def main():
             "value": trim(data["market_take"], 1000),
             "inline": False,
         }]
-    embeds = [overview]
-    embeds.extend(make_embed(item, True, generated) for item in data.get("impactful", [])[:3])
-    embeds.extend(make_embed(item, False, generated) for item in data.get("other_news", [])[:7])
-    for start in range(0, len(embeds), 10):
-        post_json(webhook, {
-            "username": "The Pirates Harbor News",
-            "content": "🏴‍☠️ **The Pirates Harbor | Hourly Crypto & Forex**" if start == 0 else "",
-            "embeds": embeds[start:start + 10],
-            "allowed_mentions": {"parse": []},
-        })
-    print(f"Sent {len(embeds)} embeds in {(len(embeds) + 9) // 10} message(s).")
-
+    fields = []
+    for item in data.get("impactful", [])[:3]:
+        title = trim(item.get("title", "Berita"), 170)
+        url = str(item.get("url", "")).strip()
+        name = "🚨 " + title
+        if url.startswith(("https://", "http://")):
+            name = "[🚨 " + title + "](" + url + ")"
+        value = "**Summary by AI**\n" + trim(item.get("summary", ""), 390)
+        if item.get("impact"):
+            value += "\n**Market Impact:** " + trim(item["impact"], 200)
+        fields.append({"name": trim(name, 256), "value": trim(value, 1024), "inline": False})
+    for item in data.get("other_news", [])[:7]:
+        title = trim(item.get("title", "Berita"), 170)
+        url = str(item.get("url", "")).strip()
+        name = "📰 " + title
+        if url.startswith(("https://", "http://")):
+            name = "[📰 " + title + "](" + url + ")"
+        fields.append({"name": trim(name, 256),
+                       "value": "**Summary by AI**\n" + trim(item.get("summary", ""), 400),
+                       "inline": False})
+    overview["title"] = "🏴‍☠️ The Pirates Harbor | Hourly Market Briefing"
+    overview["description"] = "**Apa yang dilewatkan**\n" + trim(missed, 1000)
+    overview["footer"] = {"text": "The Pirates Harbor • " + formatted_time(generated)}
+    overview["fields"] = ([{"name": "📊 Market Take — Crypto & Forex",
+                            "value": trim(market, 700), "inline": False}] if market else [])
+    overview["fields"].extend(fields)
+    while (len(overview["title"]) + len(overview["description"]) +
+           sum(len(f["name"]) + len(f["value"]) for f in overview["fields"])) > 5500:
+        if not overview["fields"]:
+            break
+        overview["fields"].pop()
+    post_json(webhook, {
+        "username": "The Pirates Harbor News",
+        "embeds": [overview],
+        "allowed_mentions": {"parse": []},
+    })
+    print("Sent one consolidated hourly embed.")
 
 if __name__ == "__main__":
     main()
