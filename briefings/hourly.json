@@ -1,25 +1,31 @@
 {
-    "generated_at": "2026-10-08T11:09:42.548+07:00",
-    "missed_summary": "Sejak briefing sebelumnya pukul 08.22 WIB, perkembangan yang terverifikasi terutama berupa kelanjutan tekanan minyak dan USD, bukan perubahan kebijakan baru. Brent kembali menguat di atas US$101/barel meski IEA mempercepat pelepasan stok; data persediaan minyak AS turun lebih besar dari perkiraan. Berita FOMC dan serangan tanker sebelumnya tidak diulang sebagai headline baru.",
-    "market_take": "Forex: risiko minyak/inflasi mempertahankan sensitivitas USD dan major pairs terhadap yield serta headline Hormuz; USD/JPY juga dipengaruhi surplus transaksi berjalan Jepang. Crypto: BTC/ETH rentan terhadap kombinasi yield tinggi, dolar kuat, dan risk-off; pantau apakah tekanan ini mereda atau meningkat.",
-    "impactful": [
-        {
-            "title": "Minyak naik lagi: Brent US$101,53 di tengah risiko kapal Hormuz",
-            "url": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
-            "summary": "Reuters melaporkan Brent naik 1,33% menjadi US$101,53 dan WTI naik 1,26% menjadi US$89,39. IEA mempercepat pelepasan cadangan, tetapi ancaman pengiriman tetap tinggi; stok crude AS turun 3,2 juta barel, lebih besar dari perkiraan 1,7 juta.",
-            "impact": "Tinggi: risiko inflasi energi dan tekanan yield dapat menopang USD serta membebani BTC/ETH."
-        }
-    ],
-    "other_news": [
-        {
-            "title": "USD dekat puncak 18 bulan; yen mendapat dukungan surplus Jepang",
-            "url": "https://www.reuters.com/world/africa/dollar-edges-back-18-month-high-after-fomc-minutes-2026-10-08/",
-            "summary": "DXY sekitar 102,23; USD/JPY melemah 0,2% ke 157,815 setelah surplus transaksi berjalan Jepang melampaui ekspektasi. Ini pembaruan angka pasar, bukan keputusan Fed baru."
-        },
-        {
-            "title": "Crypto masih tertekan oleh minyak, yield dan dolar",
-            "url": "https://www.barrons.com/articles/bitcoin-xrp-ethereum-crypto-coinbase-stock-2c0c0616",
-            "summary": "Barron's mencatat pelemahan BTC, ETH dan XRP pada sesi sebelumnya di tengah Brent di atas US$100, yield Treasury naik dan dolar menguat; tekanan makro tetap relevan."
-        }
-    ]
+  "generated_at": "2026-10-08T12:11:38.916+07:00",
+  "missed_summary": "Sejak briefing 11.09 WIB, data pelayaran baru memperjelas gangguan Hormuz: hanya 7 kapal komoditas melintas pada 6 Oktober (terendah sejak 23 Juli), dan volume minyak mentah turun 27% dari puncak masa perang. Namun, ekspor lewat pesisir Teluk Oman/Laut Merah membantu menjaga total ekspor kawasan. Di pasar FX, euro tetap tertekan oleh risiko fiskal Prancis dan yield obligasi tinggi. Belum ada keputusan Fed/ECB/BOJ atau data CPI/NFP baru pada periode ini.",
+  "market_take": "Forex: gangguan Hormuz dan minyak di atas US$100 memperbesar risiko inflasi dan volatilitas USD; EUR sensitif terhadap tekanan obligasi Prancis, sedangkan yen terhadap pergerakan yield. Crypto: BTC/ETH menghadapi tekanan risk-off bila USD/yield menguat; data pelayaran dan pergerakan obligasi lebih penting daripada mengulang headline lama. Klaim pergerakan harga mengacu pada waktu pelaporan sumber, bukan kuotasi real-time.",
+  "impactful": [
+    {
+      "title": "IMPACTFUL: Transit Hormuz terendah lebih dari dua bulan, volume crude turun 27%",
+      "url": "https://www.reuters.com/business/energy/hormuz-transits-lowest-over-two-months-after-attacks-data-shows-2026-10-08/",
+      "summary": "Reuters (8 Okt, 10.39 WIB): Kpler mencatat hanya 7 kapal komoditas melintas 6 Oktober, terendah sejak 23 Juli; arus crude 10,1 juta barel/hari, sekitar 74% level pra-perang. Pengalihan ekspor lewat Teluk Oman dan Laut Merah mencapai 6,7 juta barel/hari sehingga ekspor total kawasan tetap terjaga.",
+      "impact": "TINGGI — risiko biaya angkut dan premi minyak dapat memengaruhi ekspektasi inflasi, USD, major FX dan sentimen BTC/ETH. Data ekspor alternatif membatasi kesimpulan bahwa pasokan global langsung anjlok."
+    },
+    {
+      "title": "IMPACTFUL: Euro dekat level terendah 17 bulan di tengah tekanan utang Prancis",
+      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-08/",
+      "summary": "Reuters (8 Okt): yield tinggi dan kekhawatiran fiskal Prancis merembet ke obligasi Italia/Yunani; euro kembali mendekati posisi terlemah dalam 17 bulan. Penawaran utang besar sektor AI turut menekan sentimen obligasi dan saham Asia.",
+      "impact": "TINGGI untuk EUR/USD dan EUR crosses; yield global yang tinggi dapat menekan aset berisiko termasuk crypto."
+    }
+  ],
+  "other_news": [
+    {
+      "title": "Emas rebound 0,7% saat reli USD tertahan",
+      "url": "https://www.reuters.com/world/india/gold-edges-higher-after-hitting-two-month-low-2026-10-08/",
+      "summary": "Reuters (8 Okt, 08.21 WIB): emas spot sekitar US$4.141/oz setelah dolar melemah dari puncak 18 bulan; pasar masih menilai kemungkinan kenaikan suku bunga Fed pada Desember. Ini konteks korelasi dolar/yield, bukan perubahan kebijakan baru."
+    },
+    {
+      "title": "Rupee India rentan meski RBI hawkish; minyak menambah tekanan",
+      "url": "https://www.reuters.com/world/india/rupee-risks-more-losses-after-post-rbi-policy-slide-higher-oil-adds-woes-2026-10-08/",
+      "summary": "Reuters (8 Okt, 10.08 WIB): rupee sebelumnya melemah 0,4% ke 96,7750 per USD setelah perubahan sikap RBI; harga Brent di atas US$102 memperberat prospek importir minyak. Risiko terutama pada FX Asia."
+    }
+  ]
 }
