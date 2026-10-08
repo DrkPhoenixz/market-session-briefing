@@ -104,10 +104,10 @@ def main():
                        "value": "**Summary by AI**\n" + trim(item.get("summary", ""), 400),
                        "inline": False})
     overview["title"] = "🏴‍☠️ The Pirates Harbor | Hourly Market Briefing"
-    overview["description"] = "**Apa yang dilewatkan**\n" + trim(missed, 1000)
+    overview["description"] = "**Apa yang dilewatkan**\n" + trim(data.get("missed_summary", "Tidak ada perubahan material."), 1000)
     overview["footer"] = {"text": "The Pirates Harbor • " + formatted_time(generated)}
     overview["fields"] = ([{"name": "📊 Market Take — Crypto & Forex",
-                            "value": trim(market, 700), "inline": False}] if market else [])
+                            "value": trim(data.get("market_take", ""), 700), "inline": False}] if data.get("market_take") else [])
     overview["fields"].extend(fields)
     while (len(overview["title"]) + len(overview["description"]) +
            sum(len(f["name"]) + len(f["value"]) for f in overview["fields"])) > 5500:
