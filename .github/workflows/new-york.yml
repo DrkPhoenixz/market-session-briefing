@@ -1,12 +1,10 @@
-name: Send Pirates Harbor Daily to Discord
+name: Send Hourly Market News to Discord
 
 on:
   push:
     branches: [main]
     paths:
-      - "briefings/latest.md"
-      - "briefings/dashboard.json"
-      - "generate_dashboard.py"
+      - "briefings/hourly.json"
       - "send_discord.py"
   workflow_dispatch:
 
@@ -14,13 +12,13 @@ permissions:
   contents: read
 
 concurrency:
-  group: pirates-harbor-discord
+  group: pirates-harbor-hourly-discord
   cancel-in-progress: false
 
 jobs:
   send:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 5
     env:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
     steps:
@@ -28,9 +26,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install Pillow
-        run: python -m pip install --disable-pip-version-check pillow
-      - name: Generate dashboard PNG
-        run: python generate_dashboard.py
-      - name: Send dashboard and summary
+      - name: Send hourly market news
         run: python send_discord.py
