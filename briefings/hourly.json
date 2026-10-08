@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-10-08T11:09:42.548+07:00",
-  "missed_summary": "Sejak briefing sebelumnya pukul 08.22 WIB, perkembangan yang terverifikasi terutama berupa kelanjutan tekanan minyak dan USD, bukan perubahan kebijakan baru. Brent kembali menguat di atas US$101/barel meski IEA mempercepat pelepasan stok; data persediaan minyak AS turun lebih besar dari perkiraan. Berita FOMC dan serangan tanker sebelumnya tidak diulang sebagai headline baru.",
-  "market_take": "Forex: risiko minyak/inflasi mempertahankan sensitivitas USD dan major pairs terhadap yield serta headline Hormuz; USD/JPY juga dipengaruhi surplus transaksi berjalan Jepang. Crypto: BTC/ETH rentan terhadap kombinasi yield tinggi, dolar kuat, dan risk-off; pantau apakah tekanan ini mereda atau meningkat.",
-  "impactful": [
-    {
-      "title": "Minyak naik lagi: Brent US$101,53 di tengah risiko kapal Hormuz",
-      "url": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
-      "summary": "Reuters melaporkan Brent naik 1,33% menjadi US$101,53 dan WTI naik 1,26% menjadi US$89,39. IEA mempercepat pelepasan cadangan, tetapi ancaman pengiriman tetap tinggi; stok crude AS turun 3,2 juta barel, lebih besar dari perkiraan 1,7 juta.",
-      "impact": "Tinggi: risiko inflasi energi dan tekanan yield dapat menopang USD serta membebani BTC/ETH."
-    }
-  ],
-  "other_news": [
-    {
-      "title": "USD dekat puncak 18 bulan; yen mendapat dukungan surplus Jepang",
-      "url": "https://www.reuters.com/world/africa/dollar-edges-back-18-month-high-after-fomc-minutes-2026-10-08/",
-      "summary": "DXY sekitar 102,23; USD/JPY melemah 0,2% ke 157,815 setelah surplus transaksi berjalan Jepang melampaui ekspektasi. Ini pembaruan angka pasar, bukan keputusan Fed baru."
-    },
-    {
-      "title": "Crypto masih tertekan oleh minyak, yield dan dolar",
-      "url": "https://www.barrons.com/articles/bitcoin-xrp-ethereum-crypto-coinbase-stock-2c0c0616",
-      "summary": "Barron's mencatat pelemahan BTC, ETH dan XRP pada sesi sebelumnya di tengah Brent di atas US$100, yield Treasury naik dan dolar menguat; tekanan makro tetap relevan."
-    }
-  ]
+    "generated_at": "2026-10-08T11:09:42.548+07:00",
+    "missed_summary": "Sejak briefing sebelumnya pukul 08.22 WIB, perkembangan yang terverifikasi terutama berupa kelanjutan tekanan minyak dan USD, bukan perubahan kebijakan baru. Brent kembali menguat di atas US$101/barel meski IEA mempercepat pelepasan stok; data persediaan minyak AS turun lebih besar dari perkiraan. Berita FOMC dan serangan tanker sebelumnya tidak diulang sebagai headline baru.",
+    "market_take": "Forex: risiko minyak/inflasi mempertahankan sensitivitas USD dan major pairs terhadap yield serta headline Hormuz; USD/JPY juga dipengaruhi surplus transaksi berjalan Jepang. Crypto: BTC/ETH rentan terhadap kombinasi yield tinggi, dolar kuat, dan risk-off; pantau apakah tekanan ini mereda atau meningkat.",
+    "impactful": [
+        {
+            "title": "Minyak naik lagi: Brent US$101,53 di tengah risiko kapal Hormuz",
+            "url": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
+            "summary": "Reuters melaporkan Brent naik 1,33% menjadi US$101,53 dan WTI naik 1,26% menjadi US$89,39. IEA mempercepat pelepasan cadangan, tetapi ancaman pengiriman tetap tinggi; stok crude AS turun 3,2 juta barel, lebih besar dari perkiraan 1,7 juta.",
+            "impact": "Tinggi: risiko inflasi energi dan tekanan yield dapat menopang USD serta membebani BTC/ETH."
+        }
+    ],
+    "other_news": [
+        {
+            "title": "USD dekat puncak 18 bulan; yen mendapat dukungan surplus Jepang",
+            "url": "https://www.reuters.com/world/africa/dollar-edges-back-18-month-high-after-fomc-minutes-2026-10-08/",
+            "summary": "DXY sekitar 102,23; USD/JPY melemah 0,2% ke 157,815 setelah surplus transaksi berjalan Jepang melampaui ekspektasi. Ini pembaruan angka pasar, bukan keputusan Fed baru."
+        },
+        {
+            "title": "Crypto masih tertekan oleh minyak, yield dan dolar",
+            "url": "https://www.barrons.com/articles/bitcoin-xrp-ethereum-crypto-coinbase-stock-2c0c0616",
+            "summary": "Barron's mencatat pelemahan BTC, ETH dan XRP pada sesi sebelumnya di tengah Brent di atas US$100, yield Treasury naik dan dolar menguat; tekanan makro tetap relevan."
+        }
+    ]
 }
