@@ -1,10 +1,12 @@
 import json
 import os
-import textwrap
 import urllib.error
 import urllib.request
-import uuid
 from pathlib import Path
+
+PURPLE = 0x7C3AED
+RED = 0xEF4444
+GRAY = 0x64748B
 
 def require_env(name: str) -> str:
     value = os.getenv(name, "").strip()
@@ -13,38 +15,11 @@ def require_env(name: str) -> str:
     return value
 
 def post_json(url: str, payload: dict, timeout: int = 30) -> None:
-    body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(url, data=body, headers={"Content-Type":"application/json","User-Agent":"pirates-harbor-daily/3.0"}, method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            response.read()
-    except urllib.error.HTTPError as exc:
-        details = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"Discord HTTP {exc.code}: {details[:1000]}") from exc
-
-def post_file(url: str, file_path: Path, caption: str, timeout: int = 60) -> None:
-    boundary = "----WebKitFormBoundary" + uuid.uuid4().hex
-    payload_json = json.dumps({
-        "username": "The Pirates Harbor Daily",
-        "content": caption,
-        "allowed_mentions": {"parse":[]},
-    })
-    file_bytes = file_path.read_bytes()
-
-    parts = []
-    parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"payload_json\"\r\nContent-Type: application/json\r\n\r\n{payload_json}\r\n".encode())
-    parts.append(f"--{boundary}\r\nContent-Disposition: form-data; name=\"files[0]\"; filename=\"{file_path.name}\"\r\nContent-Type: image/png\r\n\r\n".encode())
-    parts.append(file_bytes)
-    parts.append(f"\r\n--{boundary}--\r\n".encode())
-    body = b"".join(parts)
-
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     req = urllib.request.Request(
         url,
         data=body,
-        headers={
-            "Content-Type": f"multipart/form-data; boundary={boundary}",
-            "User-Agent": "pirates-harbor-daily/3.0",
-        },
+        headers={"Content-Type": "application/json", "User-Agent": "pirates-harbor-hourly/1.0"},
         method="POST",
     )
     try:
@@ -52,46 +27,68 @@ def post_file(url: str, file_path: Path, caption: str, timeout: int = 60) -> Non
             response.read()
     except urllib.error.HTTPError as exc:
         details = exc.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"Discord upload HTTP {exc.code}: {details[:1000]}") from exc
+        raise RuntimeError(f"Discord HTTP {exc.code}: {details[:1000]}") from exc
 
-def split_message(text: str, limit: int = 1900):
-    if len(text) <= limit:
-        return [text]
-    out, cur = [], ""
-    for p in text.split("\n\n"):
-        c = p if not cur else cur + "\n\n" + p
-        if len(c) <= limit:
-            cur = c
-        else:
-            if cur: out.append(cur)
-            if len(p) <= limit: cur = p
-            else:
-                w = textwrap.wrap(p, width=limit, break_long_words=False, break_on_hyphens=False)
-                out.extend(w[:-1]); cur = w[-1] if w else ""
-    if cur: out.append(cur)
-    return out
+def trim(text, limit):
+    text = (text or "").strip()
+    return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
+
+def make_embed(item, impactful=False):
+    title = trim(item.get("title", "Berita"), 250)
+    summary = trim(item.get("summary", ""), 2400)
+    why = trim(item.get("impact", ""), 900)
+    url = item.get("url", "").strip()
+    desc = summary
+    if why:
+        desc += "\n\n**Dampak pasar:** " + why
+    embed = {
+        "title": ("🚨 " if impactful else "📰 ") + title,
+        "description": trim(desc, 4000),
+        "color": RED if impactful else PURPLE,
+    }
+    if url.startswith("http"):
+        embed["url"] = url
+    return embed
 
 def main():
     webhook = require_env("DISCORD_WEBHOOK_URL")
-    dashboard = Path("dashboard.png")
-    briefing = Path("briefings/latest.md")
+    path = Path("briefings/hourly.json")
+    if not path.exists():
+        raise RuntimeError("briefings/hourly.json not found")
 
-    if not dashboard.exists():
-        raise RuntimeError("dashboard.png not found")
-    if not briefing.exists():
-        raise RuntimeError("briefings/latest.md not found")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    generated = data.get("generated_at", "")
+    missed = trim(data.get("missed_summary", "Tidak ada ringkasan."), 1500)
+    market = trim(data.get("market_take", ""), 800)
 
-    post_file(webhook, dashboard, "📊 **Morning Gauge Test — Crypto & Forex**")
+    content = (
+        "🏴‍☠️ **The Pirates Harbor — Hourly Market News**\n"
+        + "🕐 " + generated + "\n\n"
+        + "**Apa yang dilewatkan:**\n" + missed
+    )
+    if market:
+        content += "\n\n**Market take:**\n" + market
 
-    text = briefing.read_text(encoding="utf-8").strip()
-    for chunk in split_message(text):
-        post_json(webhook, {
-            "username":"The Pirates Harbor Daily",
-            "content":chunk,
-            "allowed_mentions":{"parse":[]},
-        })
+    embeds = []
+    for item in data.get("impactful", [])[:3]:
+        embeds.append(make_embed(item, impactful=True))
+    for item in data.get("other_news", [])[:7]:
+        embeds.append(make_embed(item, impactful=False))
 
-    print("Dashboard image + market summary sent to Discord.")
+    if not embeds:
+        embeds = [{
+            "title": "Tidak ada berita material baru",
+            "description": "Belum ada headline baru yang cukup material untuk Crypto/Forex pada jendela pemantauan ini.",
+            "color": GRAY,
+        }]
+
+    post_json(webhook, {
+        "username": "The Pirates Harbor Daily",
+        "content": trim(content, 1900),
+        "embeds": embeds[:10],
+        "allowed_mentions": {"parse": []},
+    })
+    print("Sent hourly briefing with", len(embeds[:10]), "embeds.")
 
 if __name__ == "__main__":
     main()
