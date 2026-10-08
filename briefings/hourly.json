@@ -1,47 +1,25 @@
 {
-  "generated_at": "2026-10-08T08:22:00+07:00",
-  "missed_summary": "Sejak update terakhir, fokus pasar bergeser ke tiga risiko utama: dolar masih dekat level tertinggi 18 bulan setelah minutes FOMC yang hawkish; risiko energi/Hormuz kembali meningkat setelah serangan tanker mencapai level mingguan tertinggi sejak perang Iran dimulai; dan gelombang utang untuk belanja AI menambah tekanan pada pasar obligasi serta risk sentiment. Untuk Crypto/Forex, kombinasi USD kuat + yield tinggi masih menjadi headwind jangka pendek bagi risk assets.",
-  "market_take": "Forex: bias USD tetap kuat tetapi tidak satu arah karena probabilitas hike Oktober masih rendah. Crypto: tekanan jangka pendek datang dari USD/yield dan risk-off; perubahan besar berikutnya kemungkinan datang dari headline Hormuz, data inflasi AS, atau repricing Fed.",
+  "generated_at": "2026-10-08T11:09:42.548+07:00",
+  "missed_summary": "Sejak briefing sebelumnya pukul 08.22 WIB, perkembangan yang terverifikasi terutama berupa kelanjutan tekanan minyak dan USD, bukan perubahan kebijakan baru. Brent kembali menguat di atas US$101/barel meski IEA mempercepat pelepasan stok; data persediaan minyak AS turun lebih besar dari perkiraan. Berita FOMC dan serangan tanker sebelumnya tidak diulang sebagai headline baru.",
+  "market_take": "Forex: risiko minyak/inflasi mempertahankan sensitivitas USD dan major pairs terhadap yield serta headline Hormuz; USD/JPY juga dipengaruhi surplus transaksi berjalan Jepang. Crypto: BTC/ETH rentan terhadap kombinasi yield tinggi, dolar kuat, dan risk-off; pantau apakah tekanan ini mereda atau meningkat.",
   "impactful": [
     {
-      "title": "Serangan tanker di Hormuz mencapai level mingguan tertinggi sejak perang Iran",
-      "url": "https://www.reuters.com/world/middle-east/attacks-tankers-hormuz-hit-highest-any-week-since-start-iran-war-sources-say-2026-10-07/",
-      "summary": "Reuters melaporkan setidaknya 12 insiden terhadap tanker minyak, LNG dan LPG pada pekan 28 September–5 Oktober, termasuk serangan, pengawasan drone dan harassment. Lalu lintas kapal melalui selat juga disebut jauh di bawah level pra-perang.",
-      "impact": "Sangat tinggi untuk Forex/Crypto karena risiko energi dapat mengangkat oil/inflasi/yield, memperkuat USD safe-haven dan menekan aset berisiko."
-    },
-    {
-      "title": "Dollar tetap dekat high 18 bulan setelah minutes FOMC bernada hawkish",
-      "url": "https://www.reuters.com/world/africa/dollar-edges-back-18-month-high-after-fomc-minutes-2026-10-08/",
-      "summary": "Minutes FOMC menekankan kekhawatiran inflasi dan membuka kemungkinan tightening lanjutan. DXY bertahan sekitar 102,23, walau pasar hanya memberi probabilitas sekitar 19% untuk kenaikan pada pertemuan FOMC berikutnya.",
-      "impact": "Langsung memengaruhi hampir seluruh pair USD dan merupakan headwind untuk BTC/ETH bila yield ikut naik."
-    },
-    {
-      "title": "Gelombang pembiayaan AI menambah tekanan pada obligasi dan risk sentiment",
-      "url": "https://www.reuters.com/world/china/global-markets-global-markets-2026-10-08/",
-      "summary": "Broadcom, SpaceX dan perusahaan teknologi lain mencari pendanaan besar untuk belanja AI/chip. Tambahan supply utang datang ketika sovereign bond markets juga tertekan oleh inflasi dan defisit.",
-      "impact": "Yield/credit stress yang lebih tinggi dapat memperkuat USD dan mengurangi appetite untuk crypto serta high-beta risk assets."
+      "title": "Minyak naik lagi: Brent US$101,53 di tengah risiko kapal Hormuz",
+      "url": "https://www.reuters.com/business/energy/oil-rises-middle-east-supply-concerns-persist-amid-shipping-attacks-2026-10-08/",
+      "summary": "Reuters melaporkan Brent naik 1,33% menjadi US$101,53 dan WTI naik 1,26% menjadi US$89,39. IEA mempercepat pelepasan cadangan, tetapi ancaman pengiriman tetap tinggi; stok crude AS turun 3,2 juta barel, lebih besar dari perkiraan 1,7 juta.",
+      "impact": "Tinggi: risiko inflasi energi dan tekanan yield dapat menopang USD serta membebani BTC/ETH."
     }
   ],
   "other_news": [
     {
-      "title": "Iran akan menutup 'illegal routes' di Strait of Hormuz",
-      "url": "https://www.reuters.com/world/middle-east/iranian-official-says-illegal-routes-strait-hormuz-soon-be-blocked-2026-10-07/",
-      "summary": "Pejabat Iran mengatakan rute tertentu dekat pesisir Oman akan segera diblokir dan menegaskan kontrol Iran atas selat. Ini menambah risiko gangguan shipping."
+      "title": "USD dekat puncak 18 bulan; yen mendapat dukungan surplus Jepang",
+      "url": "https://www.reuters.com/world/africa/dollar-edges-back-18-month-high-after-fomc-minutes-2026-10-08/",
+      "summary": "DXY sekitar 102,23; USD/JPY melemah 0,2% ke 157,815 setelah surplus transaksi berjalan Jepang melampaui ekspektasi. Ini pembaruan angka pasar, bukan keputusan Fed baru."
     },
     {
-      "title": "Shell dan Chevron mengurangi produksi Gulf of Mexico karena Tropical Storm Isaias",
-      "url": "https://www.reuters.com/business/energy/shell-chevron-cut-gulf-mexico-output-tropical-storm-isaias-approaches-2026-10-08/",
-      "summary": "Kedua perusahaan mulai shut-in fasilitas dan mengevakuasi personel saat badai mendekat. Gangguan pasokan tambahan dapat memperkuat volatilitas oil."
-    },
-    {
-      "title": "Reuters poll masih melihat yield Treasury turun dalam beberapa bulan",
-      "url": "https://www.reuters.com/business/lower-us-treasury-yield-view-persists-despite-biggest-quarterly-surge-since-1994-2026-10-07/",
-      "summary": "Median strategist melihat US 10Y turun menuju 5,00% pada akhir tahun, walau survei mengakui forecast sebelumnya terlalu rendah dibanding realisasi yield."
-    },
-    {
-      "title": "Konflik Yemen menjadi front baru yang mengancam jalur energi",
-      "url": "https://www.reuters.com/world/middle-east/wars-explosive-new-front-2026-10-07/",
-      "summary": "Eskalasi Saudi-Houthi meningkatkan risiko di Bab el-Mandeb dan memperluas potensi gangguan energi di luar Hormuz."
+      "title": "Crypto masih tertekan oleh minyak, yield dan dolar",
+      "url": "https://www.barrons.com/articles/bitcoin-xrp-ethereum-crypto-coinbase-stock-2c0c0616",
+      "summary": "Barron's mencatat pelemahan BTC, ETH dan XRP pada sesi sebelumnya di tengah Brent di atas US$100, yield Treasury naik dan dolar menguat; tekanan makro tetap relevan."
     }
   ]
 }
